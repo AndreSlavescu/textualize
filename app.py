@@ -4,11 +4,24 @@ import cv2
 import re
 
 import pyttsx3
+from gtts import gTTS
 
 rgb2hex = lambda r, g, b: '#%02x%02x%02x' % (r, g, b)
 
 app = Flask(__name__)
 
+def text_to_speech_gTTS(mytext,gender,file):
+
+    language="en"
+    slow = False 
+    #creating audio obj from gTTS engine
+    myAudioObj = gTTS(text=mytext, lang=language, slow=slow)
+
+    #saving audio file (pass full path if you want to save to another location)
+    myAudioObj.save(file)
+
+    # checking whether file is successfully saves or not by using a print function after save function
+    print("Audio file saved.")
 
 def text_to_speech(text, gender, file):
     """
@@ -109,16 +122,16 @@ def dl_img(img_url):
 def upload():
     message = ''
     color='red'
-    sound=''
+    imgPath=''
     args = request.args
     if 'message' in args:
         message = args.get('message')
     if 'color' in args:
         color = args.get('color')
-    if 'sound' in args:
-        sound = args.get('sound')
+    if 'imgPath' in args:
+        imgPath = args.get('imgPath')
     
-    return render_template('index.html',message=message, color=color, sound=sound)
+    return render_template('index.html',message=message, color=color, imgPath=imgPath)
 
 
 @app.route('/',methods=['POST'])
@@ -145,11 +158,12 @@ def uploaded():
                         top5.append(colorname)
                         if len(top5) == 5:
                             break
-                msg = 'The predominant colors in your image are: ' + top5[0] + ', ' + top5[1] + ', ' + top5[2] + ', '+ top5[3] + ', and '+ top5[4]
-                #text_to_speech(msg, 'Female', 'static/uploaded_images/'+img_file_name+".mp3")
-                sound = '' #'static/uploaded_images/'+img_file_name+".mp3"
+
+                msg = 'The predominant colors in your image: ' + top5[0] + ', ' + top5[1] + ', ' + top5[2] + ', '+ top5[3] + ', and '+ top5[4]
+                text_to_speech_gTTS(msg, 'Female', 'static/uploaded_images/'+img_file_name+".mp3")
+                imgPath = 'static/uploaded_images/'+img_file_name
         try:
-            return render_template('index.html', message=msg, color=color, sound=sound)
+            return render_template('index.html', message=msg, color=color, imgPath=imgPath)
         except Exception as e:
             print(e)
     return render_template('index.html', message='')
