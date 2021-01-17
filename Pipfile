@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 flask = "*"
 requests = "*"
+opencv-python = "*"
+gtts = "*"
+pyttsx3 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.6"
