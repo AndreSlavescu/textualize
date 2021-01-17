@@ -4,12 +4,14 @@
     <div  class="row medium-margin-top">
         <div class="col-8 offset-2"> 
             {% if message != '' %}
-                <div class="alert alert-info" >{{message}}</div>
-                {% if sound != '' %}
-                <audio controls>
-                    <source src={{sound}} type="audio/mpeg">
+	    <div class="alert alert-info">{{message}}</div>
+                {% if imgPath != '' %}
+                <audio id="audioFile" controls autoplay>
+                    <source src="{{imgPath}}.mp3" type="audio/mpeg">
                     Your browser does not support the audio tag.
                 </audio> 
+		<br/>
+		<img src="{{imgPath}}" style="max-width:450px;max-height:450px;display:block;margin:auto;"></img>
                 {% endif%}
             {% endif%}
             <!-- <div class="form-group">
