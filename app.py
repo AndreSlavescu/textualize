@@ -145,7 +145,6 @@ def uploaded():
                         top5.append(colorname)
                         if len(top5) == 5:
                             break
-
                 msg = 'The predominant colors in your image are: ' + top5[0] + ', ' + top5[1] + ', ' + top5[2] + ', '+ top5[3] + ', and '+ top5[4]
                 #text_to_speech(msg, 'Female', 'static/uploaded_images/'+img_file_name+".mp3")
                 sound = '' #'static/uploaded_images/'+img_file_name+".mp3"
