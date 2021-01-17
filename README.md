@@ -3,4 +3,4 @@
 Understand your Images
 
 Demo at: 
-	textualize.online
+	https://textualize.online/
