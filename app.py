@@ -33,8 +33,8 @@ def text_to_speech(text, gender, file):
     engine.setProperty('voice', voices[code].id)
 
     # engine.say(text)
-    engine.save_to_file(text, "."+file)
-    # engine.runAndWait()
+    engine.save_to_file(text, file)
+    engine.runAndWait()
 
 
 
@@ -83,6 +83,7 @@ def dl_img(img_url):
         'Accept-Language': 'en-US,en;q=0.9,ur;q=0.8',
     }
 
+    file_name = None
     downloaded_file_name = None
     downloaded_file_name = img_url.split('/')[-1]
 
@@ -146,13 +147,13 @@ def uploaded():
                             break
 
                 msg = 'The predominant colors in your image are: ' + top5[0] + ', ' + top5[1] + ', ' + top5[2] + ', '+ top5[3] + ', and '+ top5[4]
-                text_to_speech(msg, 'Female', '/static/uploaded_images/'+img_file_name+".mp3")
-                sound = '/static/uploaded_images/'+img_file_name+".mp3"
+                #text_to_speech(msg, 'Female', 'static/uploaded_images/'+img_file_name+".mp3")
+                sound = '' #'static/uploaded_images/'+img_file_name+".mp3"
         try:
             return render_template('index.html', message=msg, color=color, sound=sound)
         except Exception as e:
             print(e)
-    return render_template('/')
+    return render_template('index.html', message='')
     
 if __name__ == "__main__":
     app.debug = True
