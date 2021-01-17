@@ -2,5 +2,13 @@
 
 Understand your Images
 
-Demo at: 
+Live Demo at: 
 	https://textualize.online/
+
+
+Demo Video:
+	https://youtu.be/MttFeWNfNk0	
+
+Devpost Submission for Hack the North Hackathon:
+	https://devpost.com/software/textualize-3kqux1
+	
