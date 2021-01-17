@@ -7,7 +7,6 @@ Live Demo at:
 
 
 Demo Video:
-	https://youtu.be/MttFeWNfNk0
 	[![Textualize Demo Video](https://img.youtube.com/vi/MttFeWNfNk0/0.jpg)](http://www.youtube.com/watch?v=MttFeWNfNk0)
 
 Devpost Submission for Hack the North Hackathon:
